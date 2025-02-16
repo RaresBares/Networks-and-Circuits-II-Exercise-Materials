@@ -1,0 +1,36 @@
+\usepackage{multirow}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{graphics}
+\usepackage{siunitx}
+\sisetup{per-mode = symbol% Use V/cm instead of V cm⁻¹
+,exponent-product=\cdot% Write the exponents like 5·10³, not 5x10³
+,range-phrase= \ldots % Write the exponents like 5·10³, not 5x10³
+}
+\DeclareSIUnit[number-unit-product = {}]\var{var} % Volt-Ampère reactive
+\usepackage{enumitem} % Enumitem for easier customization of enumerate lists
+\usepackage{./ET_Ueb_Header}
+\usepackage{epsfig,subfigure,cite}
+%
+\setlength{\textwidth}{15cm}%
+\setlength{\oddsidemargin}{0.3cm}
+%
+\renewcommand{\textfraction}{0.1}
+\titleformat{\section}[hang]{\normalfont\Large\bfseries}{Aufgabe
+\thesection}{.8em}{}
+\titleformat{\subsection}[hang]{\normalfont\large\bfseries}{Teil
+\thesubsection}{.8em}{}
+\renewcommand\thesubsection{\arabic{section}\Alph{subsection}}
+\setlist[enumerate,1]{label=\thesubsection.\arabic*),ref=\thesubsection.\arabic*)}
+%
+\let\cpx\underline %We use underlines as notation for complex variables
+\let\peak\hat %The amplitude (peak) of a alternating value (e.g. û)
+\newcommand\pcpx[1]{\peak{\cpx{#1}}} % Peak of complex. Since this is used quite often as "Komplexer Zeiger", we define a macro for it
+\let\avg\overline %The time-average of a value
+\newcommand{\abs}[1]{\left\lvert#1\right\rvert} %The absolute value of a signal, i.e. \abs{u} → |u|
+\newcommand{\dd}{\;\mathrm{d}} % The Volume element of an integral, \int ... \dd
+\renewcommand{\d}{\operatorname{d}\!} % The differential d for \frac{\d}{\d t}
+\renewcommand{\j}{\operatorname{j}\!} % The imaginary unit
+\newcommand{\conj}[1]{{#1}^\ast} % Complex conjugation
+\newcommand{\mat}[1]{\mathbf{#1}} % A matrix
+\newcommand{\cmat}[1]{\mat{\cpx{#1}}} % A complex matrix

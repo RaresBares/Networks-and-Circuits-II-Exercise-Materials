@@ -1,0 +1,145 @@
+%
+\graphicspath{  {../templates//}   }
+%
+\RequirePackage{graphicx}
+\newcommand\makeheader{%
+  \thispagestyle{firstpage}}
+\renewenvironment{titlepage}{%
+  \if@twocolumn
+    \@restonecoltrue\onecolumn
+  \else
+    \@restonecolfalse\newpage
+  \fi
+  \thispagestyle{firstpage}%
+  \setcounter{page}\@ne%
+}%
+{\if@restonecol\twocolumn \else \newpage \fi
+  \if@twoside\else
+    \setcounter{page}\@ne
+  \fi
+}
+\if@titlepage
+\else
+  \renewcommand\maketitle{\par
+    \begingroup
+      \renewcommand\thefootnote{\@fnsymbol\c@footnote}%
+      \def\@makefnmark{\rlap{\@textsuperscript{\normalfont\@thefnmark}}}%
+      \long\def\@makefntext##1{\parindent 1em\noindent
+          \hb@xt@1.8em{%
+              \hss\@textsuperscript{\normalfont\@thefnmark}}##1}%
+      \if@twocolumn
+        \ifnum \col@number=\@ne
+          \@maketitle
+        \else
+          \twocolumn[\@maketitle]%
+        \fi
+      \else
+        \newpage
+        \global\@topnum\z@
+        \@maketitle
+      \fi
+      \thispagestyle{firstpage}\@thanks
+    \endgroup
+    \setcounter{footnote}{0}%
+    \global\let\thanks\relax
+    \global\let\maketitle\relax
+    \global\let\@maketitle\relax
+    \global\let\@thanks\@empty
+    \global\let\@author\@empty
+    \global\let\@date\@empty
+    \global\let\@title\@empty
+    \global\let\title\relax
+    \global\let\author\relax
+    \global\let\date\relax
+    \global\let\and\relax
+  }
+  \def\@maketitle{%
+    \newpage
+    \null
+    \vskip 2em%
+    \begin{center}%
+      \let \footnote \thanks
+      {\LARGE \@title \par}%
+      \vskip 1.5em%
+      {\large
+        \lineskip .5em%
+        \begin{tabular}[t]{c}%
+          \@author
+        \end{tabular}\par}%
+      \vskip 1em%
+      {\large \@date}%
+    \end{center}%
+    \par
+    \vskip 1.5em}
+\fi
+\newenvironment{orgtitlepage}
+  {%
+    \if@twocolumn
+      \@restonecoltrue\onecolumn
+    \else
+      \@restonecolfalse\newpage
+    \fi
+    \thispagestyle{empty}%
+    \setcounter{page}\@ne
+  }%
+  {\if@restonecol\twocolumn \else \newpage \fi
+   \if@twoside\else
+     \setcounter{page}\@ne
+   \fi
+  }
+\if@titlepage
+  \renewenvironment{abstract}{%
+      \orgtitlepage
+      \null\vfil
+      \@beginparpenalty\@lowpenalty
+      \begin{center}%
+        \bfseries \abstractname
+        \@endparpenalty\@M
+      \end{center}}%
+     {\par\vfil\null\endorgtitlepage}
+\fi
+\def\ps@firstpage{%
+  \addtolength{\headheight}{33pt}
+  \addtolength{\topmargin}{-33pt}
+  \def\@oddhead{%
+    \begin{minipage}[b]{\textwidth}
+      %\includegraphics{ethlogo}%
+      %\hfill%
+      \setlength{\@tempdimb}{\textwidth}%
+      \addtolength{\@tempdimb}{-38mm}%
+      \begin{minipage}[b]{\@tempdimb}%
+      \includegraphics{ethlogo}%
+      \hfill%
+      %  \fontfamily{let}\fontseries{sb}\fontsize{\@xpt}{18}\selectfont%
+      %  \vfill%
+      %  \noindent\hfill%\@unitnameone\par%
+      %  \noindent\hfill%\@unitnametwo\strut\par\vspace{-15.5pt}\null%
+      \end{minipage}%
+      %
+      \begin{minipage}[b]{\@tempdimb}%
+      \includegraphics{Logo_HPE_R}%
+      \hfill%
+      %  \fontfamily{let}\fontseries{sb}\fontsize{\@xpt}{18}\selectfont%
+      %  \vfill%
+      %  \noindent\hfill%\@unitnameone\par%
+      %  \noindent\hfill%\@unitnametwo\strut\par\vspace{-15.5pt}\null%
+      \end{minipage}%
+    \end{minipage}%
+    %\begin{minipage}[b]{\textwidth}
+    %  \includegraphics{Logo_HPE_R}%
+    %  \hfill%
+    %  \setlength{\@tempdimb}{\textwidth}%
+    %  \addtolength{\@tempdimb}{-64mm}%
+    %\end{minipage}%
+  }
+  % In the following lines a footer on the title page can be defined
+  \def\@oddfoot {
+  \begin{minipage}[b]{\textwidth}
+  	\centering \textbf{Version: \today}
+  \end{minipage}
+  }
+%  \let\@oddfoot\@empty
+  \let\@evenhead\@oddhead
+  \let\@evenfoot\@empty
+}
+\endinput
