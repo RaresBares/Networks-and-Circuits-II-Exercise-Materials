@@ -126,7 +126,7 @@ Entgegen aller Gerüchte ist das 2. Semester nicht komplizierter, sondern nur sc
 \subsection{Zusätzliches}
 Die Übungsstunde wird, soweit möglich, aufgezeichnet. Fragen beantworte ich gerne über Whatsapp, Discord, Email. Wenn jemand etwas an dem TeX-Template ändern möchte soll er einfach eine Merge-Request machen. Ideen zur Website gerne mir schicken :))
 \newpage
-\subsection{spezifisch zu dem Kurs}
+\subsection{Für unseren Kurs}
 
 
 \begin{itemize}
@@ -135,7 +135,7 @@ Die Übungsstunde wird, soweit möglich, aufgezeichnet. Fragen beantworte ich ge
     \item \textbf{Taschenrechner}: Ich empfehle den „TI-Nspire CX II CAS“.
     \item \textbf{Prüfungstipps}: Die Prüfung hat immer denselben Aufbau, weshalb es sinnvoll ist, sich einige Automatismen anzueignen. Aufgabe 1 lässt sich „auswendig lernen“ und Aufgabe 4 kann mit etwas Glück\footnote{Erkläre ich, wenn es soweit ist.} vereinfacht werden. Aufgabe 3 kann man mit Übung sehr schnell lösen.
     \item \textbf{Empfohlene Lernmittel}: 1. Videos 2. Skript 3. Buch (Albach) 4. Die „anderen“ Bücher.
-    \item \textbf{Nuetzliches}: Nutzt LTSpice und Falstad\footnote{https://falstad.com/circuit/circuitjs.html}
+    \item \textbf{Nützlich}: Nutzt LTSpice und Falstad\footnote{https://falstad.com/circuit/circuitjs.html}
     \item \textbf{Letzter Tipp}: Macht einfach die Probeklausuren, bis ihr auswendig wisst, was die Lösungen sind und ihr seid sicher. 
 \end{itemize}
 
@@ -401,6 +401,34 @@ x(t) = \sin(\omega t)
         \item Zusatz: Differentiation und Integration im Zeitbereich bei Zeigern.
     \end{itemize}
 \end{enumerate}
+\newpage
+\section{Überblick}
 
+Bisher haben wir es, etwas verkrampft, geschafft, Sinusschwingungen als rotierende komplexe Vektoren darzustellen, indem wir ihnen einen zusätzlichen imaginären ``Teil`` geben. Wozu das Ganze? Aufgrund des linearen Zusammenhangs zwischen Strom und Spannung bei Widerständen ist es sehr einfach, damit zu rechnen. Allerdings wird es schnell kompliziert, wenn Kondensatoren und Induktivitäten ins Spiel kommen, da bei diesen der Strom über Integration bzw. Differentiation mit der Spannung verknüpft ist.
+
+Der ``Key`` am Zeigerkonzept ist, dass – wie wir gesehen haben – Integration und Differentiation im Zeitbereich sich als Multiplikation bzw. Division mit einer, zwar komplexen, aber dafür konstanten Zahl, nämlich \(j\omega\), manifestiert. Mit anderen Worten: \\
+
+\begin{center}
+\textit{Wenn wir eine Schwingung integrieren/differenzieren, ist es dasselbe, als würden wir deren Zeiger mit einer Zahl dividieren/multiplizieren.}\\
+\end{center}
+
+
+
+
+
+Damit haben wir wieder einen linearen Zusammenhang zwischen Strom und Spannung\footnote{Zwar nur von deren Zeigern, aber das reicht uns schon.}
+, und das auch bei ``komplizierten`` Komponenten wie Induktivitäten und Kondensatoren.  
+
+Jetzt läuft die Rechnung eigentlich von selbst:
+
+\[
+\begin{aligned}
+i(t) &= \frac{1}{L} \int u(t) \, dt \\
+\underline{\hat{i}} &= \frac{1}{j\omega L}\cdot \underline{\hat{u}} \\
+R_{Ind} &= \frac{\underline{\hat{u}}}{\underline{\hat{i}}} = j\omega L
+\end{aligned}
+\]
+
+Wie man sieht, hat die Induktivität in der ``Zeigerwelt`` einen festen (nicht zeitabhängigen), konstanten, aber komplexen Widerstand. Dadurch können wir viel einfacher rechnen – aber mehr dazu in der nächsten Stunde! :))
 
 \end{document}
