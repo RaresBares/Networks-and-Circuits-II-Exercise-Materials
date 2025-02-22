@@ -1,23 +1,13 @@
 \documentclass[11pt,a4paper]{article}
 
-\usepackage[utf8]{inputenc} % Zeichenkodierung
-\usepackage[T1]{fontenc}    % Bessere Zeichenunterstützung
-\usepackage[german]{babel}  % Korrekte deutsche Typografie
-\usepackage[a4paper, left=2cm, right=2cm, top=2.5cm, bottom=2.5cm]{geometry}
+% Package imports und weitere Definitionen sind in einer seperaten Datei names preamble definiert.
 
-\usepackage{graphicx}
-\usepackage[export]{adjustbox}
-\usepackage{microtype}
-\usepackage{epstopdf}
-\usepackage{float}
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{amstext}
-\usepackage{amsfonts}
-\usepackage{mathrsfs}
-\usepackage{hyphenat}
-\usepackage{fancyhdr}  
-\usepackage{qrcode}  % QR-Code generieren
+\input{preamble}
+
+% Variabeln definieren. Weitere Variabeln natürlich möglich
+
+\def \autor{Rares Sahleanu}
+\def \uebung{Übung X}
 
 \title{}
 \date{}  % Kein Datum auf Standard-Titel
@@ -26,18 +16,18 @@
 
 % === DECKBLATT ===
 \begin{titlepage}
-    \centering
-    {\Huge Netzwerke und Schaltungen II}\\[0.8cm]
-    {\Large D-ITET}\\[0.8cm]
-    {\Large HS2025}\\[3.5cm]
-    
-    {\Huge \textbf{Übung X}}\\[1cm]
-    {\Large 1.1.2000}\\[3.5cm]
+	\centering
+	{\Huge Netzwerke und Schaltungen II}\\[0.8cm]
+	{\Large D-ITET}\\[0.8cm]
+	{\Large HS2025}\\[3.5cm]
 
-    \qrcode[height=6cm]{https://www.example.com}
+	{\Huge \textbf{\uebung}}\\[1cm]
+	{\Large 1.1.2000}\\[3.5cm]
 
-    \vfill
-    {\Large \textbf{Rares Sahleanu}}
+	\qrcode[height=6cm]{https://www.example.com}
+
+	\vfill
+	{\Large \textbf{\autor}}
 \end{titlepage}
 
 % === INHALTSVERZEICHNIS ===
@@ -46,44 +36,88 @@
 
 % === AKTIVIERT KOPF- UND FUSSZEILEN AB SEITE 3 ===
 \newpage
-\pagestyle{fancy}  
+\pagestyle{fancy}
 
 % Kopfzeile: Links - Mitte - Rechts (subtil & kleiner)
-\fancyhead[L]{\small \textit{Netzwerke und Schaltungen II}}  
-\fancyhead[C]{\small \textit{Übung X}}
-\fancyhead[R]{\small \textit{Rares Sahleanu}}
+\fancyhead[L]{\small \textit{Netzwerke und Schaltungen II}}
+\fancyhead[C]{\small \textit{\uebung}}
+\fancyhead[R]{\small \textit{\autor}}
 
 % Fußzeile: Seitenzahl in der Mitte
-\fancyfoot[L]{}  
+\fancyfoot[L]{}
 \fancyfoot[C]{\thepage}
 \fancyfoot[R]{}
 
 % Linie in der Kopfzeile aktivieren, Fußzeile ohne Linie
-\renewcommand{\headrulewidth}{0.4pt}  
-\renewcommand{\footrulewidth}{0pt}  
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
 
-% === START DES DOKUMENTS ===
+%report === START DES DOKUMENTS ===
+
 \section{Grundlagen der Netzwerkanalyse}
 Die Netzwerkanalyse beschäftigt sich mit der Berechnung von Strömen und Spannungen in elektrischen Netzwerken. Wichtige Konzepte sind:
 
 \subsection{Kirchhoffsche Gesetze}
 Die Kirchhoffsche Regeln werden zur Analyse von elektrischen Netzwerken verwendet.
 
+\thm{Theorie}{
+	Das ist eine Theorie Box
+}
+
+\dfn{Definition}{
+	Definitionen sind gut fürs Verständnis.
+}
+
+
+\cor{Korollar}{
+	Wow! Ein Korollar!
+}
+
 \subsection{Maschen- und Knotenanalyse}
 Die Maschen- und Knotenanalyse ist eine wichtige Methode zur Netzwerkanalyse.
+
+\mlenma{Lenma}{
+	Braucht man Lenmas wirklich?
+}
+
+\mprop{Vorschlag}{
+	Ein Vorschlag ist immer gut!
+}
+
+\nt{
+	NUS ist cool!
+}
+
 
 \subsection{Zweipoltheorie}
 Ein elektrisches Zweipolnetz kann als Thevenin- oder Norton-Ersatzschaltung modelliert werden.
 
+\clm{}{
+	Die Erde ist flach!
+}
+
+\exa{Beispiel}{
+	Beispiele sind immer gut.
+}
+
 \subsection{Zusatzaufgaben}
 \begin{itemize}
-    \item Aufgabe 1: Berechnen Sie die Spannungen in einem einfachen Widerstandsnetzwerk mit zwei Maschen.
-    \item Aufgabe 2: Verwenden Sie die Knotenpunktanalyse, um die Ströme in einem Netzwerk mit drei Widerständen und einer Spannungsquelle zu bestimmen.
+	\item Aufgabe 1: Berechnen Sie die Spannungen in einem einfachen Widerstandsnetzwerk mit zwei Maschen.
+	\item Aufgabe 2: Verwenden Sie die Knotenpunktanalyse, um die Ströme in einem Netzwerk mit drei Widerständen und einer Spannungsquelle zu bestimmen.
 \end{itemize}
+
+\exe{Aufgabe}{
+	Diese Aufgabe ist in einer Box.
+}
+
 \vspace{1cm}
 % === ZWEITES KAPITEL ===
 \section{Frequenzgang und Filter}
 Der Frequenzgang eines Netzwerks beschreibt die Abhängigkeit der Übertragungsfunktion von der Frequenz.
+
+\sol{Lösung}{
+	Das ist die Lösung zur Aufgabe
+}
 
 \subsection{Tiefpass- und Hochpassfilter}
 Tiefpass- und Hochpassfilter ermöglichen die Frequenzselektion.
@@ -96,8 +130,8 @@ Bode-Diagramme stellen den Frequenzgang von Systemen grafisch dar.
 
 \subsection{Zusatzaufgaben}
 \begin{itemize}
-    \item Aufgabe 1: Bestimmen Sie die Grenzfrequenz eines einfachen RC-Tiefpassfilters.
-    \item Aufgabe 2: Zeichnen Sie das Bode-Diagramm eines gegebenen RLC-Bandpassfilters.
+	\item Aufgabe 1: Bestimmen Sie die Grenzfrequenz eines einfachen RC-Tiefpassfilters.
+	\item Aufgabe 2: Zeichnen Sie das Bode-Diagramm eines gegebenen RLC-Bandpassfilters.
 \end{itemize}
 
 \end{document}
