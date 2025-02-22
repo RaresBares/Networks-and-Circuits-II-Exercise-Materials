@@ -1,0 +1,261 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{graphicx}   % Zum Einbinden von Bildern
+\usepackage{amsmath} % Für mathematische Symbole
+\usepackage{array}   % Für bessere Tabellenformatierung
+\usepackage{booktabs} % Für schönere Tabellenlinien
+\usepackage[table,xcdraw]{xcolor} % Für Farben
+\usepackage{circuitikz}
+\usepackage{graphicx}
+\usepackage{graphicx}   % Zum Einbinden von Bildern
+
+
+
+% Package imports und weitere Definitionen sind in einer seperaten Datei names preamble definiert.
+
+\input{preamble}
+
+% Variabeln definieren. Weitere Variabeln natürlich möglich
+
+\def \autor{Rares Sahleanu}
+\def \uebung{Übung 2}
+
+\title{}
+\date{}  % Kein Datum auf Standard-Titel
+
+\begin{document}
+
+% === DECKBLATT ===
+\begin{titlepage}
+	\centering
+	{\Huge Netzwerke und Schaltungen II}\\[0.8cm]
+	{\Large D-ITET}\\[0.8cm]
+	{\Large FS2025}\\[3.5cm]
+
+	{\Huge \textbf{\uebung}}\\[1cm]
+	{\Large 28.2.2025}\\[3.5cm]
+
+	\qrcode[height=6cm]{https://n.ethz.ch/~rsahleanu/}
+
+	\vfill
+	{\Large \textbf{\autor}}
+\end{titlepage}
+
+\newpage
+
+% === AKTIVIERT KOPF- UND FUSSZEILEN AB SEITE 3 ===
+\newpage
+\pagestyle{fancy}
+
+% Kopfzeile: Links - Mitte - Rechts (subtil & kleiner)
+\fancyhead[L]{\small \textit{Netzwerke und Schaltungen II}}
+\fancyhead[C]{\small \textit{\uebung}}
+\fancyhead[R]{\small \textit{\autor}}
+
+% Fußzeile: Seitenzahl in der Mitte
+\fancyfoot[L]{}
+\fancyfoot[C]{\thepage}
+\fancyfoot[R]{}
+
+% Linie in der Kopfzeile aktivieren, Fußzeile ohne Linie
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+
+%report === START DES DOKUMENTS ===
+
+\section{Übersicht}  
+Heute machen wir den großen Sprung von den zunächst sehr abstrakten Zeigern zur komplexen Wechselstromrechnung. Wir werden sehen, dass wir dank der Zeiger nicht mehr integrieren oder differenzieren müssen, um mit Kondensatoren und Induktivitäten zu arbeiten. Stattdessen können wir ihnen einfach einen komplexen Widerstand zuweisen. \\
+
+Die zweite wichtige Erkenntnis wird sein, dass wir feststellen können, dass wir Stromteiler, Spannungsteiler, Kirchhoffsche Regeln und alles andere auch mit Zeigern verwenden können. \\
+
+Damit hätten wir das Fundament für den Kurs gelegt, und wir können uns ab der nächsten Übungsstunde den wichtigen Themen widmen. Jeder, der es bisher sehr schwer fand, den kann ich beruhigen: Das „komplizierte neue Konzept“ des Kurses haben wir jetzt hinter uns, und ab jetzt nutzen wir nur noch bekannte Werkzeuge und Konzepte. :))
+
+\newpage
+
+
+\section{Komplexe Widerstände}
+
+Wir können reaktiven Bauteilen komplexe Widerstände (\textbf{Impedanz}) zuweisen. 
+Die lineare Strom-Spannungs-Beziehung gilt damit auch mit \textbf{Zeigern}!
+
+\begin{center}
+\scalebox{1}{
+\begin{tabular}{c c}
+    \textbf{Bauteil} & \textbf{Impedanz} \\[8pt]
+    Induktivität & $j \omega L$ \\
+    Kapazität & $\frac{1}{j \omega C}$ \\
+    Widerstand & $R$ \\
+\end{tabular}
+}
+\end{center}
+
+\thm{Ohmsches Gesetz}{
+    Das Ohmsche Gesetz gilt nun auch für \textbf{Zeiger}. 
+    Wir verwenden jetzt jedoch statt des \textbf{Widerstands} die \textbf{Impedanz}:
+    \begin{center}
+        $\hat{u} = Z \cdot \hat{i}$
+    \end{center}
+}
+
+\nt{
+    Für ein tieferes Verständnis:  
+    Eine \textbf{Impedanz} ist klar definiert durch ihren \textbf{Betrag} (Scheinwiderstand) und ihre \textbf{Phase} (Winkel in der komplexen Ebene).  
+    Der \textbf{Betrag} gibt an, wie groß der \textbf{Widerstand} ist, unabhängig vom \textbf{imaginären Anteil}.  
+    Die \textbf{Phase} beschreibt, wie stark der \textbf{Strom} bei angelegter \textbf{Spannung verzögert} wird.\footnote{Dafür habe ich ein Video vorbereitet.}
+}
+
+\thm{Kirchhoff, Stromteiler, Spannungsteiler}{
+    Alle bekannten Werkzeuge zur Berechnung von \textbf{Netzwerken} gelten weiterhin, nun jedoch mit \textbf{komplexen Widerständen}:
+    \begin{center}
+        \[
+        \sum_{\text{Masche}} \hat{u} = 0 \quad \sum_{\text{Knoten}} \hat{i} = 0
+        \]
+    \end{center}
+
+    Zusätzlich gelten auch die \textbf{Teilerregeln}:
+
+    \begin{center}
+        \textbf{Spannungsteilerregel:}
+        \[
+        \hat{u}_2 = \hat{u}_\text{ges} \cdot \frac{Z_2}{Z_1 + Z_2}
+        \]
+        
+        \textbf{Stromteilerregel:}
+        \[
+        \hat{i}_2 = \hat{i}_\text{ges} \cdot \frac{Z_1}{Z_1 + Z_2}
+        \]
+    \end{center}
+}
+\newpage
+\nt{
+
+\textbf{Tipp:} Wenn Ihr eine Formel bestimmt habt mit der ihr aber nicht ganz sicher seid, dann ist hier ein Tipp wie man das schnell ueberpruefen kann:
+\begin{enumerate}
+    \item Erinnert euch zuruck wie sich Induktivitaeten und Kapaziteten bei Gleichstrom und sehr hohen Frequenzen und Gleichspannung verhalten
+    \item Stellt euch vor wie sich das Netzwerken in den beiden Oberen fallen verhalten wurde
+    \item setzt in die Formel, die ihr errechnet habt, $\omega = 0$ und $\omega = \infty$ ein.
+    \item interpretiert das Ergebnis
+\end{enumerate}
+
+}
+\section{Was wird wie genannt?}
+\dfn{Bezeichnungen}{
+\begin{description}
+  \item[Admittanz \(Y\)]  
+    Kehrwert der Impedanz, gibt an, wie leicht Strom fließen kann: 
+    \[
+      Y=\frac{1}{Z}.
+    \]
+    
+  \item[Impedanz \(Z\)]  
+    Komplexer Widerstand in Wechselstromkreisen, definiert als:
+    \[
+      Z=R+jX.
+    \]
+    
+  \item[Scheinwiderstand]  
+    Betrag der Impedanz, der den ``effektiven`` Widerstand ohne Phasenbetrachtung angibt:
+    \[
+      |Z|=\sqrt{R^2+X^2}.
+    \]
+    
+  \item[Phase]  
+    Winkel \(\varphi\) zwischen Spannung und Strom, bestimmt durch:
+    \[
+      \varphi=\arctan\left(\frac{X}{R}\right).
+    \]
+    
+  \item[Realteil \(R\)]  
+    Der ohmsche Anteil der Impedanz, verantwortlich für den Energieverbrauch.
+    
+  \item[Imaginärteil \(X\)]  
+    Der reaktive Anteil (Blindwiderstand), bedingt durch induktive oder kapazitive Elemente.
+\end{description}
+}
+\newpage
+\section{Graphische Tipps und Visualisierung}
+
+\includegraphics[width=\textwidth]{last.png}
+
+
+\newpage
+\section{Grundlagen der Netzwerkanalyse}
+Die Netzwerkanalyse beschäftigt sich mit der Berechnung von Strömen und Spannungen in elektrischen Netzwerken. Wichtige Konzepte sind:
+
+\subsection{Kirchhoffsche Gesetze}
+Die Kirchhoffsche Regeln werden zur Analyse von elektrischen Netzwerken verwendet.
+
+\thm{Theorie}{
+	Das ist eine Theorie Box
+}
+
+\dfn{Definition}{
+	Definitionen sind gut fürs Verständnis.
+}
+
+
+\cor{Korollar}{
+	Wow! Ein Korollar!
+}
+
+\subsection{Maschen- und Knotenanalyse}
+Die Maschen- und Knotenanalyse ist eine wichtige Methode zur Netzwerkanalyse.
+
+\mlenma{Lenma}{
+	Braucht man Lenmas wirklich?
+}
+
+\mprop{Vorschlag}{
+	Ein Vorschlag ist immer gut!
+}
+
+\nt{
+	NUS ist cool!
+}
+
+
+\subsection{Zweipoltheorie}
+Ein elektrisches Zweipolnetz kann als Thevenin- oder Norton-Ersatzschaltung modelliert werden.
+
+\clm{}{
+	Die Erde ist flach!
+}
+
+\exa{Beispiel}{
+	Beispiele sind immer gut.
+}
+
+\subsection{Zusatzaufgaben}
+\begin{itemize}
+	\item Aufgabe 1: Berechnen Sie die Spannungen in einem einfachen Widerstandsnetzwerk mit zwei Maschen.
+	\item Aufgabe 2: Verwenden Sie die Knotenpunktanalyse, um die Ströme in einem Netzwerk mit drei Widerständen und einer Spannungsquelle zu bestimmen.
+\end{itemize}
+
+\exe{Aufgabe}{
+	Diese Aufgabe ist in einer Box.
+}
+
+\vspace{1cm}
+% === ZWEITES KAPITEL ===
+\section{Frequenzgang und Filter}
+Der Frequenzgang eines Netzwerks beschreibt die Abhängigkeit der Übertragungsfunktion von der Frequenz.
+
+\sol{Lösung}{
+	Das ist die Lösung zur Aufgabe
+}
+
+\subsection{Tiefpass- und Hochpassfilter}
+Tiefpass- und Hochpassfilter ermöglichen die Frequenzselektion.
+
+\subsection{Bandpass- und Bandsperrfilter}
+Bandpass- und Bandsperrfilter entfernen spezifische Frequenzbereiche.
+
+\subsection{Bode-Diagramme}
+Bode-Diagramme stellen den Frequenzgang von Systemen grafisch dar.
+
+\subsection{Zusatzaufgaben}
+\begin{itemize}
+	\item Aufgabe 1: Bestimmen Sie die Grenzfrequenz eines einfachen RC-Tiefpassfilters.
+	\item Aufgabe 2: Zeichnen Sie das Bode-Diagramm eines gegebenen RLC-Bandpassfilters.
+\end{itemize}
+
+\end{document}

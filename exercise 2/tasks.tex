@@ -1,0 +1,150 @@
+\documentclass{article}
+\usepackage[margin=1in]{geometry} % Moderat eingestellte Ränder
+\usepackage{circuitikz}
+\usepackage{amsmath}
+\usepackage{siunitx} % Für Einheiten, optional
+\ctikzset{voltage/direction=straight}
+
+\begin{document}
+
+\section*{Aufgabe: Bestimmung des Stroms und Zeichnen des Phasors}
+
+Gegeben ist ein Wechselstromkreis mit einer sinusförmigen Spannungsquelle 
+\[
+U(t)=10\,\sin(100t)\,\text{V}
+\]
+und einer Impedanz
+\[
+Z=4+j3\,\Omega.
+\]
+Bestimmen Sie den komplexen Strom \(I\) im Stromkreis und zeichnen Sie den zugehörigen Phasor.
+
+\bigskip
+
+\begin{center}
+\begin{circuitikz}[european]
+    % Wechselspannungsquelle mit Beschriftung
+    \draw (0,0) to[sV, v={$U(t)=10\sin(100t)$}] (0,4);
+    % Verbindung zur Impedanz
+    \draw (0,4) -- (3,4)
+          to[R, l={$Z=4+j3\,\Omega$}] (3,0) -- (0,0);
+\end{circuitikz}
+\end{center}
+
+
+
+\section*{Aufgabe: Bestimmung des Stroms und Zeichnen der Spannungszeiger}
+
+Gegeben ist ein Wechselstromkreis mit einer sinusförmigen Stromquelle
+\[
+I(t)=2\,\sin(100t)\,\text{A}
+\]
+und zwei seriellen Impedanzen
+\[
+Z_1=2+j1\,\Omega,\quad Z_2=3+j2\,\Omega.
+\]
+Bestimmen Sie den komplexen Strom \(I\) im Stromkreis und zeichnen Sie die abfallenden Spannungszeiger (Phasoren) an \(Z_1\) und \(Z_2\).
+
+\bigskip
+
+\begin{center}
+\begin{circuitikz}[european, straight voltages]
+    % Stromquelle
+    \draw (0,0) to[I, i={$I(t)=2\sin(100t)$}] (0,4);
+    % Verbindung zur ersten Impedanz
+    \draw (0,4) -- (3,4);
+    % Erste Impedanz mit Spannungspfeil
+    \draw (3,4) to[R, l={$Z_1=2+j1\,\Omega$}, v={$U_{Z_1}$}] (6,4);
+    % Zweite Impedanz mit Spannungspfeil
+    \draw (6,4) to[R, l={$Z_2=3+j2\,\Omega$}, v={$U_{Z_2}$}] (9,4);
+    % Rückführung zum Ausgangspunkt
+    \draw (9,4) -- (9,0) -- (0,0);
+\end{circuitikz}
+\end{center}
+\newpage
+\section*{Aufgabe: Berechnung von \(i_2\)}
+
+Gegeben ist ein Stromteiler mit einer sinusförmigen Stromquelle und zwei parallelen Zweigen.  
+Im ersten Zweig befinden sich ein Widerstand \(R_1\) und eine Spule \(L_1\) in Serie, im zweiten Zweig eine Spule \(L_2\), ein Widerstand \(R_2\), ein Kondensator \(C\), ein Widerstand \(R_3\) und ein weiterer Widerstand \(R_4\) in Serie.  
+Die Ströme lauten:
+\[
+i \quad \text{(Hauptstrom)},\quad i_1 \quad \text{(Zweig 1)},\quad i_2 \quad \text{(Zweig 2)}.
+\]
+Bestimmen Sie \(i_2\).
+
+\bigskip
+
+\begin{center}
+\begin{figure}[!ht]
+\centering
+% Linkes Bild: Erstes Schaltbild
+\begin{minipage}{0.49\textwidth}
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{circuitikz}
+\tikzstyle{every node}=[font=\large]
+\draw (17.75,13.75) to[C,l={\large $C_1$}] (17.75,10.5);
+\draw (17.75,10.5) to[L,l={\large $L_1$}] (17.75,8.75);
+\draw (17.75,8.75) to[C,l={\large $C_1$}] (17.75,7.25);
+\draw (15,12.75) to[L,l={\large $L_2$}] (15,10.5);
+\draw (17.75,14.25) to[european resistor,l={\large $R_1$}] (17.75,16);
+\draw (15,12.75) to[european resistor,l={\large $R_2$}] (15,16);
+\draw (15,9.75) to[european resistor] (15,6.5);
+\draw (17.75,7.25) to[short] (17.75,6.5);
+\draw (17.75,6.5) to[short] (10.25,6.5);
+\draw (17.75,16) to[short] (10.25,16);
+\draw (10.25,16) to[sinusoidal voltage source, sources/symbol/rotate=auto] (10.25,6.5);
+\draw (15,9.75) to[short] (15,10.5);
+\draw (17.75,13.25) to[short] (17.75,14.25);
+% Pfeile für Stromrichtungen
+\draw [->, >=Stealth] (15,13.25) -- (15,13) node[midway, right, fill=white] {$i_2$};
+\draw [->, >=Stealth] (13.5,16) -- (13.75,16) node[midway, above, fill=white] {$i_{\text{haupt}}$};
+\draw [->, >=Stealth] (16,16) -- (16.5,16) node[midway, above, fill=white] {$i_1$};
+\draw [->, >=Stealth] (9.25,12.25) -- (9.25,10.5) node[midway, left, fill=white] {u(t)};
+\end{circuitikz}
+}
+\end{minipage}\hfill
+% Rechtes Bild: Zweites Schaltbild
+\begin{minipage}{0.49\textwidth}
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{circuitikz}
+\tikzstyle{every node}=[font=\large]
+\draw (17,11.75) to[european resistor,l={\large $Z_1$}] (17,8.75);
+\draw (15,11.75) to[european resistor,l={\large $Z_2$}] (15,8.75);
+\draw (17,11.75) to[short] (13.25,11.75);
+\draw (17,8.75) to[short] (13.25,8.75);
+\draw (13.25,11.75) to[sinusoidal voltage source, sources/symbol/rotate=auto] (13.25,8.75);
+% Pfeile für Stromrichtungen
+\draw [->, >=Stealth] (12.75,10.75) -- (12.75,9.5) node[midway, left, fill=white] {u(t)};
+\draw [->, >=Stealth] (15,11.5) -- (15,11) node[midway, right, fill=white] {$i_2$};
+\draw [->, >=Stealth] (15.5,11.75) -- (16,11.75) node[midway, above, fill=white] {$i_1$};
+\draw [->, >=Stealth] (14,11.75) -- (14.25,11.75) node[midway, above, fill=white] {$i_{\text{haupt}}$};
+\end{circuitikz}
+}
+\end{minipage}
+\caption{Linkes Bild: Stromteiler-Schaltung; Rechtes Bild: Impedanzschaltung}
+\label{fig:combined}
+\end{figure}
+\end{center}
+
+\section*{Aufgabe: Spannungsteiler mit Widerstand und Kondensator}
+
+Gegeben ist ein Spannungsteiler, der aus einem Widerstand \(R\) und einem Kondensator \(C\) besteht.  
+An den Spannungsteiler wird die sinusförmige Spannung
+\[
+u(t)=U_0\sin(\omega t)
+\]
+angelegt. Bestimmen Sie den Spannungsabfall \(u_C(t)\) am Kondensator in Abhängigkeit von \(R\), \(C\) und \(\omega\).
+
+\bigskip
+
+\begin{center}
+\begin{circuitikz}[american]
+  % Zeichne die sinusförmige Spannungsquelle, den Widerstand und den Kondensator in Serie
+  \draw (0,0) to[sinusoidal voltage source, l={$u(t)=U_0\sin(\omega t)$}] (0,4)
+        to[R, l={$R$}] (3,4)
+        to[C, l={$C$}, v^={$u_C(t)$}] (3,0) -- (0,0);
+\end{circuitikz}
+\end{center}
+\end{document}
