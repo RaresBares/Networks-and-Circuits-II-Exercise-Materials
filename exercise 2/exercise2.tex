@@ -7,7 +7,7 @@
 \usepackage{circuitikz}
 \usepackage{graphicx}
 \usepackage{graphicx}   % Zum Einbinden von Bildern
-
+\usepackage[T1]{fontenc}
 
 
 % Package imports und weitere Definitionen sind in einer seperaten Datei names preamble definiert.
@@ -99,7 +99,7 @@ Die lineare Strom-Spannungs-Beziehung gilt damit auch mit \textbf{Zeigern}!
 }
 \vfill
 
-Eigentlich ist das bereits die Haupterkenntnis des ersten Kapitels. Alles, was ab jetzt folgt, sind lediglich Konsequenzen bzw. Folgerungen der Annahme. Als zentrale Beispiele dienen bestimmte Formen von Spannungsteilern (sog. Filter), die nur spezifische Ausführungen normaler Spannungsteiler darstellen.
+Eigentlich ist das bereits die Haupterkenntnis des ersten Kapitels. Alles, was ab jetzt folgt, sind lediglich Konsequenzen bzw. Folgerungen der dieser Theorie. Als zentrale Beispiele dienen bestimmte Arten von Spannungsteilern (sog. Filter), die nur spezifische Ausführungen normaler Spannungsteiler darstellen.
 \vfill
 
 \nt{
@@ -133,6 +133,7 @@ Eigentlich ist das bereits die Haupterkenntnis des ersten Kapitels. Alles, was a
     \end{center}
 }
 \newpage
+\vfill
 \nt{
 
 \textbf{Tipp:} Wenn Ihr eine Formel bestimmt habt mit der ihr aber nicht ganz sicher seid, dann ist hier ein Tipp wie man das schnell ueberpruefen kann:
@@ -144,7 +145,10 @@ Eigentlich ist das bereits die Haupterkenntnis des ersten Kapitels. Alles, was a
 \end{enumerate}
 
 }
+\vfill
 \section{Was wird wie genannt?}
+Damit wir später alle dieselben Begriffe verwenden, ist es notwendig, eine Definition zu treffen. Diese ist, Gott sei Dank, sehr intuitiv und trägt jetzt nicht maßgeblich zum Verständnis bei.
+\vfill
 \dfn{Bezeichnungen}{
 \begin{description}
   \item[Admittanz \(Y\)]  
@@ -178,10 +182,44 @@ Eigentlich ist das bereits die Haupterkenntnis des ersten Kapitels. Alles, was a
     Der reaktive Anteil (Blindwiderstand), bedingt durch induktive oder kapazitive Elemente.
 \end{description}
 }
+
+\exe{Aufgabe}{
+	Bestimme die Phase und den Btrag dieser Impedanz: \\ \begin{center}
+	    $\underline{Z} = R+j\omega L + \frac{1}{j\omega C}$
+	\end{center}\\
+    Tipp: $\frac{1}{j} = -j$
+}
 \newpage
 \section{Graphische Tipps und Visualisierung}
+\subsection{Visualisierung - Impedanz}
+\begin{center}
+    \includegraphics[width=0.9\textwidth]{last.png}
 
-\includegraphics[width=\textwidth]{last.png}
+\end{center}
+In diesem Beispiel wird ein einfaches Beispiel einer Impedanz an einer Spannungsquelle behandelt. die oberen Zwei bilder zeigen jeweils die Impedanz und die Spannung in Zeigerdarstellung. Unten ist dann der resultierende Strom in Zeit und Zeigerdarstellung. Hervorgehoben wurde die isolierte Auswirkng der Impedanz auf den Strom. Dieser ist um $\varphi = arg(Z)$ gegenueber der Spannung voreilend und ist gegenueber der Spannung um den Betrag $|\underline{Z}|$ skaliert\footnote{Eine Animierte Simulation auf meiner Website: https://n.ethz.ch/~rsahleanu/nus2/utils/impe.html}\\
+\textbf{Beachte:} Im Falle enes Realen widerstands, sind Strom und Spannung in Phase, da $arg(Z) = 0$ ist
+\subsection{Intuition - Wie koennen Spannung und Strom nicht in Phase sein? }
+
+
+
+\noindent%
+{
+  \begin{minipage}[t]{0.4\textwidth}
+    \vspace{0pt} % Erzwingt Top-Ausrichtung
+    \centering
+    \includegraphics[width=\textwidth]{analogy.png}
+
+  \end{minipage}%
+}
+\hfill%
+{
+  \begin{minipage}[t]{0.55\textwidth}
+    \vspace{0pt} % Erzwingt Top-Ausrichtung
+    
+ Je höher der Wasserstand im Kanister, desto mehr Wasser fließt heraus, und Wasser kann nur maximal halb so schnell ausfließen, wie man eingießen kann. Wenn ich eine sinusförmige Menge Wasser eingieße, ist der Kanister erst nach Erreichen der maximalen Eingießgeschwindigkeit am vollsten und leert sich dementsprechend auch am schnellsten. Die Maxima der Gießgeschwindigkeit und der Wasseraustrittsgeschwindigkeit bzw. des Wasserstands sind demnach nicht in Phase.
+  \end{minipage}%
+}
+
 
 
 \newpage
