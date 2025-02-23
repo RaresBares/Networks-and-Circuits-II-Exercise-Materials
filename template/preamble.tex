@@ -45,8 +45,14 @@
 \definecolor{myexamplebg}{HTML}{F2FBF8}
 \definecolor{myexamplefr}{HTML}{88D6D1}
 \definecolor{myexampleti}{HTML}{2A7F7F}
-\definecolor{mydefinitbg}{HTML}{E5E5FF}
-\definecolor{mydefinitfr}{HTML}{3F3FA3}
+\definecolor{mydefinitbg}{HTML}{FFE3E3}
+\definecolor{mydefinitfr}{HTML}{950000}
+\definecolor{notefr}{HTML}{D98C4A}
+\definecolor{notebg}{HTML}{FBF3EC}
+\definecolor{qstionfr}{HTML}{EA76CB}
+\definecolor{qstionbg}{HTML}{FCEDF8}
+\definecolor{mysolfr}{HTML}{27598E}
+\definecolor{mysolbg}{HTML}{D4E3F3}
 \definecolor{notesgreen}{RGB}{0,162,0}
 \definecolor{myp}{RGB}{197, 92, 212}
 \definecolor{mygr}{HTML}{2C3338}
@@ -330,7 +336,7 @@
 % BEISPIEL
 %================================
 
-\newtcbtheorem[number within=section]{Example}{Beispiel}
+\newtcbtheorem{Example}{Beispiel}
 {%
 	colback = myexamplebg
 	,breakable
@@ -347,7 +353,7 @@
 }
 {ex}
 
-\newtcbtheorem[number within=section]{example}{Beispiel}
+\newtcbtheorem{example}{Beispiel}
 {%
 	colback = myexamplebg
 	,breakable
@@ -368,47 +374,43 @@
 % DEFINITION
 %================================
 
-\newtcbtheorem[number within=section]{Definition}{Definition}{enhanced,
-	before skip=2mm,after skip=2mm, colback=red!5,colframe=red!80!black,boxrule=0.5mm,
-	attach boxed title to top left={xshift=1cm,yshift*=1mm-\tcboxedtitleheight}, varwidth boxed title*=-3cm,
-	boxed title style={frame code={
-					\path[fill=tcbcolback]
-					([yshift=-1mm,xshift=-1mm]frame.north west)
-					arc[start angle=0,end angle=180,radius=1mm]
-					([yshift=-1mm,xshift=1mm]frame.north east)
-					arc[start angle=180,end angle=0,radius=1mm];
-					\path[left color=tcbcolback!60!black,right color=tcbcolback!60!black,
-						middle color=tcbcolback!80!black]
-					([xshift=-2mm]frame.north west) -- ([xshift=2mm]frame.north east)
-					[rounded corners=1mm]-- ([xshift=1mm,yshift=-1mm]frame.north east)
-					-- (frame.south east) -- (frame.south west)
-					-- ([xshift=-1mm,yshift=-1mm]frame.north west)
-					[sharp corners]-- cycle;
-				},interior engine=empty,
-		},
-	fonttitle=\bfseries,
-	title={#2},#1}{def}
-\newtcbtheorem[number within=section]{definition}{Definition}{enhanced,
-	before skip=2mm,after skip=2mm, colback=red!5,colframe=red!80!black,boxrule=0.5mm,
-	attach boxed title to top left={xshift=1cm,yshift*=1mm-\tcboxedtitleheight}, varwidth boxed title*=-3cm,
-	boxed title style={frame code={
-					\path[fill=tcbcolback]
-					([yshift=-1mm,xshift=-1mm]frame.north west)
-					arc[start angle=0,end angle=180,radius=1mm]
-					([yshift=-1mm,xshift=1mm]frame.north east)
-					arc[start angle=180,end angle=0,radius=1mm];
-					\path[left color=tcbcolback!60!black,right color=tcbcolback!60!black,
-						middle color=tcbcolback!80!black]
-					([xshift=-2mm]frame.north west) -- ([xshift=2mm]frame.north east)
-					[rounded corners=1mm]-- ([xshift=1mm,yshift=-1mm]frame.north east)
-					-- (frame.south east) -- (frame.south west)
-					-- ([xshift=-1mm,yshift=-1mm]frame.north west)
-					[sharp corners]-- cycle;
-				},interior engine=empty,
-		},
-	fonttitle=\bfseries,
-	title={#2},#1}{def}
+\newtcbtheorem[number within=section]{Definition}{Definition}
+{
+	enhanced,
+	breakable,
+	colback = mydefinitbg,
+	frame hidden,
+	boxrule = 0sp,
+	borderline west = {2pt}{0pt}{mydefinitfr},
+	sharp corners,
+	detach title,
+	before upper = \tcbtitle\par\smallskip,
+	coltitle = mydefinitfr,
+	fonttitle = \bfseries\sffamily,
+	description font = \mdseries,
+	separator sign none,
+	segmentation style={solid, mydefinitfr},
+}
+{def}
 
+\newtcbtheorem[number within=section]{definition}{Definition}
+{
+	enhanced,
+	breakable,
+	colback = mydefinitbg,
+	frame hidden,
+	boxrule = 0sp,
+	borderline west = {2pt}{0pt}{mydefinitfr},
+	sharp corners,
+	detach title,
+	before upper = \tcbtitle\par\smallskip,
+	coltitle = mydefinitfr,
+	fonttitle = \bfseries\sffamily,
+	description font = \mdseries,
+	separator sign none,
+	segmentation style={solid, mydefinitfr},
+}
+{def}
 
 
 %================================
@@ -416,29 +418,24 @@
 %================================
 
 \makeatletter
-\newtcbtheorem{solution}{Lösung}{enhanced,
+\newtcbtheorem[number within=section]{solution}{Lösung}
+{
+	enhanced,
 	breakable,
-	colback=white,
-	colframe=myb!80!black,
-	attach boxed title to top left={yshift*=-\tcboxedtitleheight},
-	fonttitle=\bfseries,
-	title={#2},
-	boxed title size=title,
-	boxed title style={%
-			sharp corners,
-			rounded corners=northwest,
-			colback=tcbcolframe,
-			boxrule=0pt,
-		},
-	underlay boxed title={%
-			\path[fill=tcbcolframe] (title.south west)--(title.south east)
-			to[out=0, in=180] ([xshift=5mm]title.east)--
-			(title.center-|frame.east)
-			[rounded corners=\kvtcb@arc] |-
-			(frame.north) -| cycle;
-		},
-	#1
-}{def}
+	colback = mysolbg,
+	frame hidden,
+	boxrule = 0sp,
+	borderline west = {2pt}{0pt}{mysolfr},
+	sharp corners,
+	detach title,
+	before upper = \tcbtitle\par\smallskip,
+	coltitle = mysolfr,
+	fonttitle = \bfseries\sffamily,
+	description font = \mdseries,
+	separator sign none,
+	segmentation style={solid, mysolfr},
+}
+{def}
 \makeatother
 
 %================================
@@ -446,70 +443,50 @@
 %================================
 
 \makeatletter
-\newtcbtheorem{qstion}{Frage}{enhanced,
+\newtcbtheorem{qstion}{Frage}
+{
+	enhanced,
 	breakable,
-	colback=white,
-	colframe=mygr,
-	attach boxed title to top left={yshift*=-\tcboxedtitleheight},
-	fonttitle=\bfseries,
-	title={#2},
-	boxed title size=title,
-	boxed title style={%
-			sharp corners,
-			rounded corners=northwest,
-			colback=tcbcolframe,
-			boxrule=0pt,
-		},
-	underlay boxed title={%
-			\path[fill=tcbcolframe] (title.south west)--(title.south east)
-			to[out=0, in=180] ([xshift=5mm]title.east)--
-			(title.center-|frame.east)
-			[rounded corners=\kvtcb@arc] |-
-			(frame.north) -| cycle;
-		},
-	#1
-}{def}
+	colback = qstionbg,
+	frame hidden,
+	boxrule = 0sp,
+	borderline west = {2pt}{0pt}{qstionfr},
+	sharp corners,
+	detach title,
+	before upper = \tcbtitle\par\smallskip,
+	coltitle = qstionfr,
+	fonttitle = \bfseries\sffamily,
+	description font = \mdseries,
+	separator sign none,
+	segmentation style={solid, qstionfr},
+}
+{qs}
 \makeatother
 
 %================================
 % BEMERKUNG
 %================================
 
-\usetikzlibrary{arrows,calc,shadows.blur}
-\tcbuselibrary{skins}
-\newtcolorbox{note}[1][]{%
-	enhanced jigsaw,
-	colback=gray!20!white,%
-	colframe=gray!80!black,
-	size=small,
-	boxrule=1pt,
-	title=\textbf{Bemerkung:-},
-	halign title=flush center,
-	coltitle=black,
+\tcbuselibrary{theorems,skins,hooks}
+\newtcbtheorem[number within=section]{note}{Bemerkung}
+{
+	enhanced,
 	breakable,
-	drop shadow=black!50!white,
-	attach boxed title to top left={xshift=1cm,yshift=-\tcboxedtitleheight/2,yshifttext=-\tcboxedtitleheight/2},
-	minipage boxed title=2.5cm,
-	boxed title style={%
-			colback=white,
-			size=fbox,
-			boxrule=1pt,
-			boxsep=2pt,
-			underlay={%
-					\coordinate (dotA) at ($(interior.west) + (-0.5pt,0)$);
-					\coordinate (dotB) at ($(interior.east) + (0.5pt,0)$);
-					\begin{scope}
-						\clip (interior.north west) rectangle ([xshift=3ex]interior.east);
-						\filldraw [white, blur shadow={shadow opacity=60, shadow yshift=-.75ex}, rounded corners=2pt] (interior.north west) rectangle (interior.south east);
-					\end{scope}
-					\begin{scope}[gray!80!black]
-						\fill (dotA) circle (2pt);
-						\fill (dotB) circle (2pt);
-					\end{scope}
-				},
-		},
-	#1,
+	colback = notebg,
+	frame hidden,
+	boxrule = 0sp,
+	borderline west = {2pt}{0pt}{notefr},
+	sharp corners,
+	detach title,
+	before upper = \tcbtitle\par\smallskip,
+	coltitle = notefr,
+	fonttitle = \bfseries\sffamily,
+	description font = \mdseries,
+	separator sign none,
+	segmentation style={solid, notefr},
 }
+{nt}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Definierte Commands um in der template Datei zu verwenden.
@@ -524,7 +501,8 @@
 \newcommand{\exe}[2]{\begin{Exercise}{#1}{}#2\end{Exercise}}
 \newcommand{\dfn}[2]{\begin{Definition}[colbacktitle=red!75!black]{#1}{}#2\end{Definition}}
 \newcommand{\sol}[2]{\begin{solution}{#1}{}#2\end{solution}}
-\newcommand{\nt}[1]{\begin{note}#1\end{note}}
+\newcommand{\qs}[2]{\begin{qstion}{#1}{}#2\end{qstion}}
+\newcommand{\nt}[2]{\begin{note}{#1}{}#2\end{note}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % INHALTSVERZEICHNIS
