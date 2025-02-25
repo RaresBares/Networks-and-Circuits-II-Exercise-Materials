@@ -1,30 +1,36 @@
 \documentclass{article}
-\usepackage[margin=1in]{geometry} % Moderat eingestellte Ränder
+\usepackage[margin=0.8in]{geometry} % Moderat eingestellte Ränder
 \usepackage{circuitikz}
 \usepackage{amsmath}
 \usepackage{siunitx} % Für Einheiten, optional
-\ctikzset{voltage/direction=straight}
+\usepackage{fancyhdr} % Paket für Kopf- und Fußzeilen
 
 \begin{document}
 
-\section*{Aufgabe: Bestimmung des Stroms und Zeichnen des Phasors}
+\pagestyle{fancy}
+\fancyhf{} % Entfernt Standardkopfzeile
+\fancyhead[L]{\small \textit{Netzwerke und Schaltungen II}}
+\fancyhead[C]{\small \textit{Aufgaben}}
+\fancyhead[R]{\small \textit{Rares Sahleanu}}
+
+\section*{Aufgabe 1: Basics}
 
 Gegeben ist ein Wechselstromkreis mit einer sinusförmigen Spannungsquelle 
 \[
-U(t)=10\,\sin(100t)\,\text{V}
+u(t)=10\,\sin(100 \pi t)\,\text{V}
 \]
 und einer Impedanz
 \[
 Z=4+j3\,\Omega.
 \]
-Bestimmen Sie den komplexen Strom \(I\) im Stromkreis und zeichnen Sie den zugehörigen Phasor.
-
+\textbf{Bestimmen Sie den komplexen Strom \(I\) im Stromkreis und skizzieren Sie das zugehörige Zeigerdiagramm.
+}
 \bigskip
 
 \begin{center}
 \begin{circuitikz}[european]
     % Wechselspannungsquelle mit Beschriftung
-    \draw (0,0) to[sV, v={$U(t)=10\sin(100t)$}] (0,4);
+    \draw (0,0) to[sV, v={$u(t)=10\sin(100 \pi t)$}] (0,4);
     % Verbindung zur Impedanz
     \draw (0,4) -- (3,4)
           to[R, l={$Z=4+j3\,\Omega$}] (3,0) -- (0,0);
@@ -33,24 +39,24 @@ Bestimmen Sie den komplexen Strom \(I\) im Stromkreis und zeichnen Sie den zugeh
 
 
 
-\section*{Aufgabe: Bestimmung des Stroms und Zeichnen der Spannungszeiger}
+\section*{Aufgabe 2: Spannungsteiler}
 
 Gegeben ist ein Wechselstromkreis mit einer sinusförmigen Stromquelle
 \[
-I(t)=2\,\sin(100t)\,\text{A}
+i(t)=2\text{A}\,\sin(100 \omega t)\,
 \]
 und zwei seriellen Impedanzen
 \[
 Z_1=2+j1\,\Omega,\quad Z_2=3+j2\,\Omega.
 \]
-Bestimmen Sie den komplexen Strom \(I\) im Stromkreis und zeichnen Sie die abfallenden Spannungszeiger (Phasoren) an \(Z_1\) und \(Z_2\).
-
+\textbf{Bestimmen Sie den Strom \(i\) und dessen Zeiger $\underline{\hat{i}}$ im Stromkreis und berechnen und skizzieren Sie die abfallenden Spannungszeiger und Die Ströme an/durch \(Z_1\) und \(Z_2\) in einem Zeigerdiagram.
+}
 \bigskip
 
 \begin{center}
 \begin{circuitikz}[european, straight voltages]
     % Stromquelle
-    \draw (0,0) to[I, i={$I(t)=2\sin(100t)$}] (0,4);
+    \draw (0,0) to[I, i={$i(t)=2\sin(100t)$}] (0,4);
     % Verbindung zur ersten Impedanz
     \draw (0,4) -- (3,4);
     % Erste Impedanz mit Spannungspfeil
@@ -62,16 +68,37 @@ Bestimmen Sie den komplexen Strom \(I\) im Stromkreis und zeichnen Sie die abfal
 \end{circuitikz}
 \end{center}
 \newpage
-\section*{Aufgabe: Berechnung von \(i_2\)}
+\newgeometry{bottom=0.6in} % Weniger Rand unten auf der zweiten Seite
+\section*{Aufgabe 2: Warm up}
+
+Gegeben ist ein Spannungsteiler, der aus einem Widerstand \(R\) und einem Kondensator \(C\) besteht.  
+An den Spannungsteiler wird die sinusförmige Spannung
+\[
+u(t)=\hat{u}\sin(\omega t)
+\]
+angelegt.\\
+\textbf{Bestimmen Sie den Spannungsabfall $\hat{u}$/\(u_C(t)\) am Kondensator in Abhängigkeit von \(R\), \(C\) und \(\omega\).
+}
+
+\begin{center}
+\begin{circuitikz}[american]
+  % Zeichne die sinusförmige Spannungsquelle, den Widerstand und den Kondensator in Serie
+  \draw (0,0) to[sinusoidal voltage source, l={$u(t)=\hat{u}\sin(\omega t)$}] (0,4)
+        to[R, l={$R$}] (3,4)
+        to[C, l={$C$}] (3,0) -- (0,0);
+\end{circuitikz}
+\end{center}
+
+\section*{Aufgabe 3: Crazy shit}
 
 Gegeben ist ein Stromteiler mit einer sinusförmigen Stromquelle und zwei parallelen Zweigen.  
-Im ersten Zweig befinden sich ein Widerstand \(R_1\) und eine Spule \(L_1\) in Serie, im zweiten Zweig eine Spule \(L_2\), ein Widerstand \(R_2\), ein Kondensator \(C\), ein Widerstand \(R_3\) und ein weiterer Widerstand \(R_4\) in Serie.  
-Die Ströme lauten:
+Im ersten Zweig befinden sich ein Widerstand \(R_1\), zwei Kondensatoren $C_1$ und $C_2'$ und eine Spule \(L_1\) in Serie, im zweiten Zweig eine Spule \(L_2\) und zwei Widerstände \(R_2\) und \(R_2'\) in Serie.  
+Die Ströme werden genannt als:
 \[
 i \quad \text{(Hauptstrom)},\quad i_1 \quad \text{(Zweig 1)},\quad i_2 \quad \text{(Zweig 2)}.
 \]
-Bestimmen Sie \(i_2\).
-
+\textbf{Bestimmen Sie \(Z_2\) und \(Z_2\) (Gemäß Ersatschaltbild) und \(i_1\) und \(i_2\) analytisch.
+}
 \bigskip
 
 \begin{center}
@@ -85,11 +112,11 @@ Bestimmen Sie \(i_2\).
 \tikzstyle{every node}=[font=\large]
 \draw (17.75,13.75) to[C,l={\large $C_1$}] (17.75,10.5);
 \draw (17.75,10.5) to[L,l={\large $L_1$}] (17.75,8.75);
-\draw (17.75,8.75) to[C,l={\large $C_1$}] (17.75,7.25);
+\draw (17.75,8.75) to[C,l={\large $C_1'$}] (17.75,7.25);
 \draw (15,12.75) to[L,l={\large $L_2$}] (15,10.5);
 \draw (17.75,14.25) to[european resistor,l={\large $R_1$}] (17.75,16);
 \draw (15,12.75) to[european resistor,l={\large $R_2$}] (15,16);
-\draw (15,9.75) to[european resistor] (15,6.5);
+\draw (15,9.75) to[european resistor,l={\large $R_2'$}] (15,6.5);
 \draw (17.75,7.25) to[short] (17.75,6.5);
 \draw (17.75,6.5) to[short] (10.25,6.5);
 \draw (17.75,16) to[short] (10.25,16);
@@ -128,23 +155,4 @@ Bestimmen Sie \(i_2\).
 \end{figure}
 \end{center}
 
-\section*{Aufgabe: Spannungsteiler mit Widerstand und Kondensator}
-
-Gegeben ist ein Spannungsteiler, der aus einem Widerstand \(R\) und einem Kondensator \(C\) besteht.  
-An den Spannungsteiler wird die sinusförmige Spannung
-\[
-u(t)=U_0\sin(\omega t)
-\]
-angelegt. Bestimmen Sie den Spannungsabfall \(u_C(t)\) am Kondensator in Abhängigkeit von \(R\), \(C\) und \(\omega\).
-
-\bigskip
-
-\begin{center}
-\begin{circuitikz}[american]
-  % Zeichne die sinusförmige Spannungsquelle, den Widerstand und den Kondensator in Serie
-  \draw (0,0) to[sinusoidal voltage source, l={$u(t)=U_0\sin(\omega t)$}] (0,4)
-        to[R, l={$R$}] (3,4)
-        to[C, l={$C$}, v^={$u_C(t)$}] (3,0) -- (0,0);
-\end{circuitikz}
-\end{center}
 \end{document}
