@@ -68,6 +68,16 @@ Heute machen wir den großen Sprung von den zunächst sehr abstrakten Zeigern zu
 Die zweite wichtige Erkenntnis wird sein, dass wir feststellen können, dass wir Stromteiler, Spannungsteiler, Kirchhoffsche Regeln und alles andere auch mit Zeigern verwenden können. \\
 
 Damit hätten wir das Fundament für den Kurs gelegt, und wir können uns ab der nächsten Übungsstunde den wichtigen Themen widmen. Jeder, der es bisher sehr schwer fand, den kann ich beruhigen: Das „komplizierte neue Konzept“ des Kurses haben wir jetzt hinter uns, und ab jetzt nutzen wir nur noch bekannte Werkzeuge und Konzepte. :))
+\vspace{1cm}
+\section{Reim der Woche}
+\vspace{0.75cm}
+\begin{center}
+    \textit{Ich brauch' meinen Namen nicht mehr sagen, bin ein Made Man -
+Da ist kein Salat in meinem Magen, bin ein Steak-Fan} \\
+
+\vspace{0.5cm}
+Sido in ``Made Man``
+\end{center}
 
 \newpage
 
@@ -102,7 +112,7 @@ Die lineare Strom-Spannungs-Beziehung gilt damit auch mit \textbf{Zeigern}!
 Eigentlich ist das bereits die Haupterkenntnis des ersten Kapitels. Alles, was ab jetzt folgt, sind lediglich Konsequenzen bzw. Folgerungen der dieser Theorie. Als zentrale Beispiele dienen bestimmte Arten von Spannungsteilern (sog. Filter), die nur spezifische Ausführungen normaler Spannungsteiler darstellen.
 \vfill
 
-\nt{
+\nt{}{
     Für ein tieferes Verständnis:  
     Eine \textbf{Impedanz} ist klar definiert durch ihren \textbf{Betrag} (Scheinwiderstand) und ihre \textbf{Phase} (Winkel in der komplexen Ebene).  
     Der \textbf{Betrag} gibt an, wie groß der \textbf{Widerstand} ist, unabhängig vom \textbf{imaginären Anteil}.  
@@ -134,7 +144,7 @@ Eigentlich ist das bereits die Haupterkenntnis des ersten Kapitels. Alles, was a
 }
 \newpage
 \vfill
-\nt{
+\nt{}{
 
 \textbf{Tipp:} Wenn Ihr eine Formel bestimmt habt mit der ihr aber nicht ganz sicher seid, dann ist hier ein Tipp wie man das schnell ueberpruefen kann:
 \begin{enumerate}
@@ -196,9 +206,9 @@ Damit wir später alle dieselben Begriffe verwenden, ist es notwendig, eine Defi
     \includegraphics[width=0.9\textwidth]{last.png}
 
 \end{center}
-In diesem Beispiel wird ein einfaches Beispiel einer Impedanz an einer Spannungsquelle behandelt. die oberen Zwei bilder zeigen jeweils die Impedanz und die Spannung in Zeigerdarstellung. Unten ist dann der resultierende Strom in Zeit und Zeigerdarstellung. Hervorgehoben wurde die isolierte Auswirkng der Impedanz auf den Strom. Dieser ist um $\varphi = arg(Z)$ gegenueber der Spannung voreilend und ist gegenueber der Spannung um den Betrag $|\underline{Z}|$ skaliert\footnote{Eine Animierte Simulation auf meiner Website: https://n.ethz.ch/~rsahleanu/nus2/utils/impe.html}\\
+In diesem Beispiel wird ein einfaches Beispiel einer Impedanz an einer Spannungsquelle behandelt. die oberen Zwei bilder zeigen jeweils die Impedanz und die Spannung in Zeigerdarstellung. Unten ist dann der resultierende Strom in Zeit und Zeigerdarstellung. Hervorgehoben wurde die isolierte Auswirkng der Impedanz auf den Strom. Dieser ist um $\varphi = arg(Z)$ gegenueber der Spannung voreilend und ist gegenueber der Spannung um den Betrag $|\underline{Z}|$ skaliert\footnote{Eine animierte Simulation auf meiner Website: https://n.ethz.ch/~rsahleanu/nus2/utils/impe.html}\\
 \textbf{Beachte:} Im Falle enes Realen widerstands, sind Strom und Spannung in Phase, da $arg(Z) = 0$ ist
-\subsection{Intuition - Wie koennen Spannung und Strom nicht in Phase sein? }
+\subsection{Intuition - Wie können Spannung und Strom nicht in Phase sein? }
 
 
 
@@ -216,91 +226,57 @@ In diesem Beispiel wird ein einfaches Beispiel einer Impedanz an einer Spannungs
   \begin{minipage}[t]{0.55\textwidth}
     \vspace{0pt} % Erzwingt Top-Ausrichtung
     
- Je höher der Wasserstand im Kanister, desto mehr Wasser fließt heraus, und Wasser kann nur maximal halb so schnell ausfließen, wie man eingießen kann. Wenn ich eine sinusförmige Menge Wasser eingieße, ist der Kanister erst nach Erreichen der maximalen Eingießgeschwindigkeit am vollsten und leert sich dementsprechend auch am schnellsten. Die Maxima der Gießgeschwindigkeit und der Wasseraustrittsgeschwindigkeit bzw. des Wasserstands sind demnach nicht in Phase.
+Je höher der Wasserstand im Kanister, desto mehr Wasser fließt heraus, und Wasser kann nur maximal halb so schnell ausfließen, wie es eingegossen werden kann. Wenn ich eine sinusförmige Menge Wasser eingieße, ist der Kanister erst nach Erreichen der maximalen Eingießgeschwindigkeit am vollsten und entleert sich dementsprechend auch am schnellsten. Die Maxima der Eingießgeschwindigkeit und der Wasseraustrittsgeschwindigkeit bzw. des Wasserstands sind demnach nicht in Phase.
   \end{minipage}%
 }
 
-
-
 \newpage
-\section{Grundlagen der Netzwerkanalyse}
-Die Netzwerkanalyse beschäftigt sich mit der Berechnung von Strömen und Spannungen in elektrischen Netzwerken. Wichtige Konzepte sind:
-
-\subsection{Kirchhoffsche Gesetze}
-Die Kirchhoffsche Regeln werden zur Analyse von elektrischen Netzwerken verwendet.
-
-\thm{Theorie}{
-	Das ist eine Theorie Box
-}
-
-\dfn{Definition}{
-	Definitionen sind gut fürs Verständnis.
-}
 
 
-\cor{Korollar}{
-	Wow! Ein Korollar!
-}
-
-\subsection{Maschen- und Knotenanalyse}
-Die Maschen- und Knotenanalyse ist eine wichtige Methode zur Netzwerkanalyse.
-
-\mlenma{Lenma}{
-	Braucht man Lenmas wirklich?
-}
-
-\mprop{Vorschlag}{
-	Ein Vorschlag ist immer gut!
-}
-
-\nt{
-	NUS ist cool!
-}
+\section{Tipps zur Übung}
 
 
-\subsection{Zweipoltheorie}
-Ein elektrisches Zweipolnetz kann als Thevenin- oder Norton-Ersatzschaltung modelliert werden.
 
-\clm{}{
-	Die Erde ist flach!
-}
 
-\exa{Beispiel}{
-	Beispiele sind immer gut.
-}
 
-\subsection{Zusatzaufgaben}
-\begin{itemize}
-	\item Aufgabe 1: Berechnen Sie die Spannungen in einem einfachen Widerstandsnetzwerk mit zwei Maschen.
-	\item Aufgabe 2: Verwenden Sie die Knotenpunktanalyse, um die Ströme in einem Netzwerk mit drei Widerständen und einer Spannungsquelle zu bestimmen.
-\end{itemize}
 
-\exe{Aufgabe}{
-	Diese Aufgabe ist in einer Box.
-}
+\begin{enumerate}
+    \item Aufgabe: 
+    \begin{itemize}
+        \item Das ohm'sche Gesetz mit Zeigern: $\hat{u} = \underline{Z}$ 
+    \end{itemize}
+    \item Aufgabe:
+    \begin{itemize}
+        \item Stromteiler für Zeiger:
+        \[
+        \hat{i}_2 = \hat{i}_\text{ges} \cdot \frac{Z_1}{Z_1 + Z_2}
+        \]
+        zurück.
+        \item Für das Zeichnen der Zeiger in 2.3: Maschen- und Knotengleichungen gelten auch bei Zeigern!
+    \end{itemize}
+
+    \item Aufgabe: 
+    \begin{itemize}
+        \item Serieschaltung gilt auch bei Impedanzen:
+        \[
+        \underline{Z}_{ges} = \underline{Z}_{1} + \underline{Z}_{2}
+        \]
+        \item Parallelschaltung gilt auch bei Impedanzen:
+        \[
+        \frac{1}{\underline{Z}_{ges}} = \frac{1}{\underline{Z}_{1}} + \frac{1}{\underline{Z}_{2}}
+        \]
+    \end{itemize}
+
+    \item Aufgabe: 
+    \begin{itemize}
+        \item Aufgabe lässt sich relativ leicht berechnen mit den Maschengleichungen
+        \item für die 4.2: Parallel- und Serienschaltung von Impedanzen!
+    \end{itemize}
+\end{enumerate}
 
 \vspace{1cm}
-% === ZWEITES KAPITEL ===
-\section{Frequenzgang und Filter}
-Der Frequenzgang eines Netzwerks beschreibt die Abhängigkeit der Übertragungsfunktion von der Frequenz.
 
-\sol{Lösung}{
-	Das ist die Lösung zur Aufgabe
-}
+\section{Übersicht und Ausblick}
 
-\subsection{Tiefpass- und Hochpassfilter}
-Tiefpass- und Hochpassfilter ermöglichen die Frequenzselektion.
-
-\subsection{Bandpass- und Bandsperrfilter}
-Bandpass- und Bandsperrfilter entfernen spezifische Frequenzbereiche.
-
-\subsection{Bode-Diagramme}
-Bode-Diagramme stellen den Frequenzgang von Systemen grafisch dar.
-
-\subsection{Zusatzaufgaben}
-\begin{itemize}
-	\item Aufgabe 1: Bestimmen Sie die Grenzfrequenz eines einfachen RC-Tiefpassfilters.
-	\item Aufgabe 2: Zeichnen Sie das Bode-Diagramm eines gegebenen RLC-Bandpassfilters.
-\end{itemize}
-
+In dieser Stunde haben wir sozusagen alle notwendigen Werkzeuge zusammengetragen, um den Kurs "Netzwerke und Schaltungen II" voll zu starten. Wir wissen, wie wir mit Wechselstrom und reaktiven Komponenten arbeiten können und können nun alles Erdenkliche in einem Netzwerk berechnen. In den nächsten Stunden werden wir uns mit Filtern beschäftigen – diese sind Spannungsteiler, die das Teilungsverhältnis abhängig von Frequenzen ändern. Bei hohen Frequenzen können diese bspw. einen größeren Spannungsabfall bewirken als bei geringen, und dadurch schreibt man ihnen eine gewisse Filtercharakteristik zu, wie bspw. Low-Pass oder High-Pass.
 \end{document}
