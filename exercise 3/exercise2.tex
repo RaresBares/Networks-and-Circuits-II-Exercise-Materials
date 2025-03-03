@@ -1,0 +1,73 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{graphicx}   % Zum Einbinden von Bildern
+\usepackage{amsmath} % Für mathematische Symbole
+\usepackage{array}   % Für bessere Tabellenformatierung
+\usepackage{booktabs} % Für schönere Tabellenlinien
+\usepackage[table,xcdraw]{xcolor} % Für Farben
+\usepackage{circuitikz}
+\usepackage{graphicx}
+\usepackage{graphicx}   % Zum Einbinden von Bildern
+\usepackage[T1]{fontenc}
+
+
+% Package imports und weitere Definitionen sind in einer seperaten Datei names preamble definiert.
+
+\input{preamble}
+\newcommand{\zeiger}[1]{\underline{\hat{#1}}}
+
+% Variabeln definieren. Weitere Variabeln natürlich möglich
+
+\def \autor{Rares Sahleanu}
+\def \uebung{Übung 2}
+
+\title{}
+\date{}  % Kein Datum auf Standard-Titel
+
+\begin{document}
+
+% === DECKBLATT ===
+\begin{titlepage}
+	\centering
+	{\Huge Netzwerke und Schaltungen II}\\[0.8cm]
+	{\Large D-ITET}\\[0.8cm]
+	{\Large FS2025}\\[3.5cm]
+
+	{\Huge \textbf{\uebung}}\\[1cm]
+	{\Large 28.2.2025}\\[3.5cm]
+
+	\qrcode[height=6cm]{https://n.ethz.ch/~rsahleanu/}
+
+	\vfill
+	{\Large \textbf{\autor}}
+\end{titlepage}
+
+\newpage
+
+% === AKTIVIERT KOPF- UND FUSSZEILEN AB SEITE 3 ===
+\newpage
+\pagestyle{fancy}
+
+% Kopfzeile: Links - Mitte - Rechts (subtil & kleiner)
+\fancyhead[L]{\small \textit{Netzwerke und Schaltungen II}}
+\fancyhead[C]{\small \textit{\uebung}}
+\fancyhead[R]{\small \textit{\autor}}
+
+% Fußzeile: Seitenzahl in der Mitte
+\fancyfoot[L]{}
+\fancyfoot[C]{\thepage}
+\fancyfoot[R]{}
+
+% Linie in der Kopfzeile aktivieren, Fußzeile ohne Linie
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\newpage
+
+\section{Übersicht}
+Soooo, endspurt mit der Vorbereitung! Wir behandeln heute Schwingkreise - Das erste Thema, welches so richtig zu NuS 2 passt. Ab jetzt wird es nur noch spannender. Schwingkreise kann man klassifizieren (Lowpass, Highpass, Bandpass, etc.) - Wie man die sich genau vorstellen kann erkläre ich gleich, aber erstmal vorab: Es hilft sehr sich das als analogie zur Schaukel vorzustellen - Also versucht, wo ihr nur könnt, es euch ohne Strom, sondern mechanisch vorzustellen.
+
+\newpage
+\section{}
+
+\end{document}
+
